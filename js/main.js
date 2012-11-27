@@ -1,4 +1,7 @@
-// Model to access contacts
+
+(function () {
+
+	// address book data
 
 var adressBook = {
 
@@ -98,3 +101,10 @@ var adressBook = {
 	}
 	]
 };
+
+// define the DOM elements
+
+var searchForm = document.getElementByID("search-form"),
+	searchField = document.getElementByID("search-box"),
+	count = addressBook.length,
+	target = document.getElementByID("output");
