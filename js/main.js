@@ -14,6 +14,29 @@ function getHTTPObject() {
 	return xhr;
 }
 
+// define the ajax call
+
+function  ajaxCall(dataUrl, outputElement,callback) {
+
+	var request = getHTTPObject();
+
+	outputElement.innerHTML = "Loading...";
+	request.onreadystatechange = function() {
+		if ( request.readyState === 4 && request.status === 200 ) {
+			var contacts = JSON.parse(request.responseText);
+
+			if(typeof callback === "function") {
+
+				callback(contacts);
+			}
+		}
+	}
+	
+	request.open("GET", dataUrl, true);
+	request.send(null);
+}
+
+// start annoynymous function
 
 (function () {
 
