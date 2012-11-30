@@ -4,11 +4,10 @@ function getHTTPObject() {
 
     var xhr;
 
-    if (window.XMLHttpRequet) {
+    if (window.XMLHttpRequest) {
 
-        xhr = new XMLHttpRequet();
-    }
-    else if (window.ActiveXObject) {
+        xhr = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
         xhr = new ActiveXObject("Msxm12.XMLHTTP");
     }
 
@@ -57,7 +56,6 @@ function ajaxCall(dataUrl, outputElement, callback) {
             var output = document.getElementById("output");
 
             ajaxCall('data/contacts.json', output, function(data) {
-
 
                 var searchValue = searchField.value,
                     addrBook = data.addressBook,
@@ -115,7 +113,7 @@ function ajaxCall(dataUrl, outputElement, callback) {
 
         removeActiveSection: function() {
 
-            this.parentNode.removeAttributes("class");
+            this.parentNode.removeAttribute("class");
         },
 
         addHoverClass: function() {
