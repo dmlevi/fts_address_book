@@ -55,84 +55,100 @@ function  ajaxCall(dataUrl, outputElement,callback) {
 
 	var addr = {
 
-	search : function(event) {
+		search : function(event) {
 
-		var output = document.getElementById("output");
+			var output = document.getElementById("output");
 
-		ajaxCall('data/contacts.json', output, function (data) {
+			ajaxCall('data/contacts.json', output, function (data) {
 
 
-			var searchValue = searchField.value,
-				addrBook = data.addressBook,
+				var searchValue = searchField.value,
+					addrBook = data.addressBook,
+					count = addrBook.length,
+					i;
+
+				event.preventDefault();
+
+				target.innerHTML = "";
+
+				if(count > 0 && searchValue !== "") {
+
+					for(i = 0; i < count; i = i + 1)  {
+
+						var obj = addressBook[i],
+							isItFound = obj.name.indexOf(searchValue);
+
+						if(isItFound !== -1) {
+
+							target.innerHTML += '<p>' + obj.name + ', <a href="mailto:' + obj.email + '">' + obj.email + '</a><p>';
+						}
+					}
+				}
+			});
+		},
+
+		getAllContacts : function () {
+
+			var output = document.getElementById("output");
+
+			ajaxCall('data/contacts.json', output, function (data) {
+
+				var addrBook = data.addressBook,
 				count = addrBook.length,
 				i;
 
-			event.preventDefault();
+				target.innerHTML = "";
 
-			target.innerHTML = "";
+				if(count > 0) {
+				
+					for(i=0; i < count; i = i + 1) {
 
-			if(count > 0 && searchValue !== "") {
+						var obj = addressBook[i];
 
-				for(i = 0; i < count; i = i + 1)  {
-
-					var obj = addressBook[i],
-						isItFound = obj.name.indexOf(searchValue);
-
-					if(isItFound !== -1) {
-
-						target.innerHTML += '<p>' + obj.name + ', <a href="mailto:' + obj.email + '">' + obj.email + '</a><p>';
+						target.innerHTML += '<p>' + obj.name + ', <a href=mailto:' + obj.email + '">' + obj.email + '</a><p>';
 					}
 				}
-			}
-		});
-	},
+			});
+		},
 
-	getAllContacts : function () {
-
-		var output = document.getElementById("output");
-
-		ajaxCall('data/contacts.json', output, function (data) {
-
-			var addrBook = data.addressBook,
-			count = addrBook.length,
-			i;
-
-			target.innerHTML = "";
-
-			if(count > 0) {
+		setActiveSection : function() {
 			
-				for(i=0; i < count; i = i + 1) {
+			this.parentNode.removeAttribute("class");
+		},
 
-					var obj = addressBook[i];
+		removeActiveSection : function () {
+			
+			this.parentNode.removeAttributes("class");
+		},
 
-					target.innerHTML += '<p>' + obj.name + ', <a href=mailto:' + obj.email + '">' + obj.email + '</a><p>';
-				}
-			}
-		});
-	},
+		addHoverClass : function() {
+			
+			searchForm.setAttribute("class", "hovering");
+		},
 
-	setActiveSection : function() {
-		this.parentNode.removeAttribute("class");
-	},
-	addHoverClass : function() {
-		searchForm.setAttribute("class", "hovering");
-	},
-	removeHoverClass : function() {
-		searchForm.removeAttribute("class");
-	}
-} 
+		removeHoverClass : function() {
+			
+			searchForm.removeAttribute("class");
+		}
+	}   
 
-// end addr object
+		// end addr object
 
-// activate the event listeners
+	// activate the event listeners
 
-searchField.addEventListener("keyup", addr.search, false);
-searchField.addEventListener("focus", addr.setActiveSection, false);
-searchField.addEventListener("blur", addr.removeActiveSection, false);
-getAllButton.addEventListener("click", addr.getAllContacts, false);
-searchForm.addEventListener("mouseover", addr.addHoverClass, false);
-searchForm.addEventListener("mouseout", addr.removeHoverClass, false);
-searchForm.addEventListener("submit", addr.search, false);
+	searchField.addEventListener("keyup", addr.search, false);
+
+	searchField.addEventListener("focus", addr.setActiveSection, false);
+
+	searchField.addEventListener("blur", addr.removeActiveSection, false);
+
+	getAllButton.addEventListener("click", addr.getAllContacts, false);
+
+	searchForm.addEventListener("mouseover", addr.addHoverClass, false);
+
+	searchForm.addEventListener("mouseout", addr.removeHoverClass, false);
+
+	searchForm.addEventListener("submit", addr.search, false);
 
 })();
 
