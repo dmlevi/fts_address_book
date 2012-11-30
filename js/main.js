@@ -7,7 +7,8 @@ function getHTTPObject() {
 	if (window.XMLHttpRequet) {
 
 		xhr = new XMLHttpRequet();  
-		} else if (window.ActiveXObject) {
+		} 
+		else if (window.ActiveXObject) {
 			xhr = new ActiveXObject("Msxm12.XMLHTTP");
 	}
 
@@ -48,7 +49,6 @@ function  ajaxCall(dataUrl, outputElement,callback) {
 
 	var searchForm = document.getElementById("search-form"),
 		searchField = document.getElementById("q"),
-		count = addressBook.length,
 		target = document.getElementById("output");
 
 	// define address book methods
@@ -75,12 +75,12 @@ function  ajaxCall(dataUrl, outputElement,callback) {
 
 					for(i = 0; i < count; i = i + 1)  {
 
-						var obj = addressBook[i],
+						var obj = addrBook[i],
 							isItFound = obj.name.indexOf(searchValue);
 
 						if(isItFound !== -1) {
 
-							target.innerHTML += '<p>' + obj.name + ', <a href="mailto:' + obj.email + '">' + obj.email + '</a><p>';
+							target.innerHTML += '<p>' obj.name + ',<a href="mailto:' + obj.email + ' ">' + obj.email + '</a></p>';
 						}
 					}
 				}
@@ -94,8 +94,8 @@ function  ajaxCall(dataUrl, outputElement,callback) {
 			ajaxCall('data/contacts.json', output, function (data) {
 
 				var addrBook = data.addressBook,
-				count = addrBook.length,
-				i;
+					count = addrBook.length,
+					i;
 
 				target.innerHTML = "";
 
@@ -103,9 +103,9 @@ function  ajaxCall(dataUrl, outputElement,callback) {
 				
 					for(i=0; i < count; i = i + 1) {
 
-						var obj = addressBook[i];
+						var obj = addrBook[i];
 
-						target.innerHTML += '<p>' + obj.name + ', <a href=mailto:' + obj.email + '">' + obj.email + '</a><p>';
+						target.innerHTML += '<p>' obj.name + ',<a href="mailto:' + obj.email + ' ">' + obj.email + '</a></p>';
 					}
 				}
 			});
@@ -113,7 +113,7 @@ function  ajaxCall(dataUrl, outputElement,callback) {
 
 		setActiveSection : function() {
 			
-			this.parentNode.removeAttribute("class");
+			this.parentNode.removeAttribute("class", "active");
 		},
 
 		removeActiveSection : function () {
