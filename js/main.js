@@ -2,153 +2,145 @@
 
 function getHTTPObject() {
 
-	var xhr;
+    var xhr;
 
-	if (window.XMLHttpRequet) {
+    if (window.XMLHttpRequet) {
 
-		xhr = new XMLHttpRequet();  
-		} 
-		else if (window.ActiveXObject) {
-			xhr = new ActiveXObject("Msxm12.XMLHTTP");
-	}
+        xhr = new XMLHttpRequet();
+    }
+    else if (window.ActiveXObject) {
+        xhr = new ActiveXObject("Msxm12.XMLHTTP");
+    }
 
-	return xhr;
+    return xhr;
 }
 
 // define the ajax call
 
-function  ajaxCall(dataUrl, outputElement,callback) {
+function ajaxCall(dataUrl, outputElement, callback) {
 
-	var request = getHTTPObject();
+    var request = getHTTPObject();
 
-	outputElement.innerHTML = "Loading...";
+    outputElement.innerHTML = "Loading...";
 
-	request.onreadystatechange = function() {
+    request.onreadystatechange = function() {
 
-		if ( request.readyState === 4 && request.status === 200 ) {
+        if (request.readyState === 4 && request.status === 200) {
 
-			var contacts = JSON.parse(request.responseText);
+            var contacts = JSON.parse(request.responseText);
 
-			if(typeof callback === "function") {
+            if (typeof callback === "function") {
 
-				callback(contacts);
-			} 			
-		}
-	}
-	
-	request.open("GET", dataUrl, true);
-	
-	request.send(null);
+                callback(contacts);
+            }
+        }
+    };
+
+    request.open("GET", dataUrl, true);
+
+    request.send(null);
 }
 
 // start annoynymous function
+(function() {
 
-(function (){
+    // define the DOM elements
+    var searchForm = document.getElementById("search-form"),
+        searchField = document.getElementById("q"),
+        target = document.getElementById("output");
 
-	// define the DOM elements
+    // define address book methods
+    var addr = {
 
-	var searchForm = document.getElementById("search-form"),
-		searchField = document.getElementById("q"),
-		target = document.getElementById("output");
+        search: function(event) {
 
-	// define address book methods
+            var output = document.getElementById("output");
 
-	var addr = {
-
-		search : function(event) {
-
-			var output = document.getElementById("output");
-
-			ajaxCall('data/contacts.json', output, function (data) {
+            ajaxCall('data/contacts.json', output, function(data) {
 
 
-				var searchValue = searchField.value,
-					addrBook = data.addressBook,
-					count = addrBook.length,
-					i;
+                var searchValue = searchField.value,
+                    addrBook = data.addressBook,
+                    count = addrBook.length,
+                    i;
 
-				event.preventDefault();
+                event.preventDefault();
 
-				target.innerHTML = "";
+                target.innerHTML = "";
 
-				if(count > 0 && searchValue !== "") {
+                if (count > 0 && searchValue !== "") {
 
-					for(i = 0; i < count; i = i + 1)  {
+                    for (i = 0; i < count; i = i + 1) {
 
-						var obj = addrBook[i],
-							isItFound = obj.name.indexOf(searchValue);
+                        var obj = addrBook[i],
+                            isItFound = obj.name.indexOf(searchValue);
 
-						if(isItFound !== -1) {
+                        if (isItFound !== -1) {
 
-							target.innerHTML += '<p>' obj.name + ',<a href="mailto:' + obj.email + ' ">' + obj.email + '</a></p>';
-						}
-					}
-				}
-			});
-		},
+                            target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>';
+                        }
+                    }
+                }
+            });
+        },
 
-		getAllContacts : function () {
+        getAllContacts: function() {
 
-			var output = document.getElementById("output");
+            var output = document.getElementById("output");
 
-			ajaxCall('data/contacts.json', output, function (data) {
+            ajaxCall('data/contacts.json', output, function(data) {
 
-				var addrBook = data.addressBook,
-					count = addrBook.length,
-					i;
+                var addrBook = data.addressBook,
+                    count = addrBook.length,
+                    i;
 
-				target.innerHTML = "";
+                target.innerHTML = "";
 
-				if(count > 0) {
-				
-					for(i=0; i < count; i = i + 1) {
+                if (count > 0) {
 
-						var obj = addrBook[i];
+                    for (i = 0; i < count; i = i + 1) {
 
-						target.innerHTML += '<p>' obj.name + ',<a href="mailto:' + obj.email + ' ">' + obj.email + '</a></p>';
-					}
-				}
-			});
-		},
+                        var obj = addrBook[i];
 
-		setActiveSection : function() {
-			
-			this.parentNode.removeAttribute("class", "active");
-		},
+                        target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>';
+                    }
+                }
+            });
+        },
 
-		removeActiveSection : function () {
-			
-			this.parentNode.removeAttributes("class");
-		},
+        setActiveSection: function() {
 
-		addHoverClass : function() {
-			
-			searchForm.setAttribute("class", "hovering");
-		},
+            this.parentNode.removeAttribute("class", "active");
+        },
 
-		removeHoverClass : function() {
-			
-			searchForm.removeAttribute("class");
-		}
-	}   
+        removeActiveSection: function() {
 
-		// end addr object
+            this.parentNode.removeAttributes("class");
+        },
 
-	// activate the event listeners
+        addHoverClass: function() {
 
-	searchField.addEventListener("keyup", addr.search, false);
+            searchForm.setAttribute("class", "hovering");
+        },
 
-	searchField.addEventListener("focus", addr.setActiveSection, false);
+        removeHoverClass: function() {
 
-	searchField.addEventListener("blur", addr.removeActiveSection, false);
+            searchForm.removeAttribute("class");
+        }
+    };
 
-	getAllButton.addEventListener("click", addr.getAllContacts, false);
+    // end addr object
+    // activate the event listeners
+    searchField.addEventListener("keyup", addr.search, false);
 
-	searchForm.addEventListener("mouseover", addr.addHoverClass, false);
+    searchField.addEventListener("focus", addr.setActiveSection, false);
 
-	searchForm.addEventListener("mouseout", addr.removeHoverClass, false);
+    searchField.addEventListener("blur", addr.removeActiveSection, false);
 
-	searchForm.addEventListener("submit", addr.search, false);
+    searchForm.addEventListener("mouseover", addr.addHoverClass, false);
+
+    searchForm.addEventListener("mouseout", addr.removeHoverClass, false);
+
+    searchForm.addEventListener("submit", addr.search, false);
 
 })();
-
