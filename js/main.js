@@ -124,6 +124,22 @@
         ]
     };
 
+    var object = contacts.addressBook,
+          count = object.length,
+          output = document.getElementById("output"),
+          i;
+
+    if(count > 0) {
+
+            for (i = 0; i < count; i = i + 1) {
+                var item = object[i],
+                name = item.name,
+                email = item.email;
+
+                output.innerHTML += '<p><a href="mailto:' + email + '">' + name + '</a></p>';
+            }
+    }
+
     function getContacts() {
 
     }
