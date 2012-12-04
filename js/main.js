@@ -2,12 +2,6 @@
 // start annoynymous function
 (function() {
 
-    // define the DOM elements
-    var searchForm = document.getElementById("search-form"),
-         searchField = document.getElementById("q"),
-         target = document.getElementById("output");
-
-
     // address book data
 
      var contacts = {
@@ -124,25 +118,60 @@
         ]
     };
 
-    var object = contacts.addressBook,
-          count = object.length,
-          output = document.getElementById("output"),
-          i;
+    // define the DOM elements
+    var searchForm = document.getElementById("search-form"),
+         searchField = document.getElementById("q"),
+         target = document.getElementById("output"),
+         count = contacts.addressBook.length;
 
-    if(count > 0) {
+    var addr = {
 
-            for (i = 0; i < count; i = i + 1) {
-                var item = object[i],
-                name = item.name,
-                email = item.email;
+        search : function(event) {
 
-                output.innerHTML += '<p><a href="mailto:' + email + '">' + name + '</a></p>';
+            var searchValue = searchField.value,
+            i;
+
+            event.preventDefault();
+        
+            target.innerHTML = "";
+
+            if(count > 0 && searchValue !=="") {
+
+                for ( i = 0; i < count; i = i +1) {
+
+                    var obj = contacts.addressBook[i],
+                        isItFound = obj.name.indexOf(searchValue);
+
+                        if(isItFound !== -1) {
+
+                                 target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>';
+
+
+                        }
+            
             }
+        }
+    },
+
+    getAllContacts : function() {
+
+        var i;
+
+        target.innerHTML = "";
+
+        if(count > 0) {
+
+            for (i = 0; i < count; i =i +1) {
+
+                var obj = contacts.addressBook[i];
+
+                    target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>';
+
+            }
+        }
     }
+};
 
-    function getContacts() {
-
-    }
-
+    searchField.addEventListener("keyup", addr.search, false);
 
 })();
