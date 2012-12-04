@@ -116,10 +116,7 @@
                     if (isItFound !== -1) {
 
                         target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>';
-
-
                     }
-
                 }
             }
         },
