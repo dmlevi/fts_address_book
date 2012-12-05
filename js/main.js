@@ -2,23 +2,6 @@
 (function() {
 
 
-    function ajaxCall(dataUrl) {
-        
-        var request = getHTTPObject();
-
-        request.onreadystatechange = function() {
-
-            if (request.readyState === 4 && request.status === 200 ) {
-
-                console.log(request.responseText);
-            }
-        },
-
-        request.open("GET", dataUrl, true);
-
-        request.send(null);
-    }
-
     // define the DOM elements
 
     var searchForm = document.getElementById("search-form"),
