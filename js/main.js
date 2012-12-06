@@ -141,10 +141,10 @@
                 for (i = 0; i < count; i = i + 1) {
 
                     var obj = contacts.addressBook[i],
-                        isItFound = obj.name.toLowerCase().indexOf(searchValue);
+                        isItFound = obj.name.indexOf(searchValue);
 
                     if (isItFound !== -1) {
-
+                      
                         target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>';
                     }
                 }

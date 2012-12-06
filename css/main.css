@@ -46,7 +46,7 @@ table {
 
 /*Global***********************************************/
 
-@import url(http://fonts.googleapis.com/css?family=Comfortaa);
+<link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
 
 body {
 	background: url("../img/body_bg.png");
