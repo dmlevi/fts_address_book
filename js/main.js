@@ -141,9 +141,9 @@
                 for (i = 0; i < count; i = i + 1) {
 
                     var obj = contacts.addressBook[i],
-                        isItFound = obj.name.indexOf(searchValue);
+                        isItFound = obj.name.match(new RegExp(searchValue, "i"));
 
-                    if (isItFound !== -1) {
+                    if (isItFound) {
                       
                         target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>';
                     }

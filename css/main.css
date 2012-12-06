@@ -46,7 +46,6 @@ table {
 
 /*Global***********************************************/
 
-<link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
 
 body {
 	background: url("../img/body_bg.png");
@@ -55,8 +54,10 @@ body {
 .main {
 	width: 960px;
 	margin: 0 auto;
-	background: rgba(0,0,0,.1)
+	background: rgba(0,0,0,.1);
 }
+
+/*header*****************************************************/
 
 header {
 	background: url("../img/header_bg.png")
@@ -70,6 +71,9 @@ h1 {
 	padding: 40px;
 	text-shadow: white 1px 1px 1px white;
 }
+
+
+/*main***********************************************************/
 
 #search-form, #output {
 	text-align: center;
