@@ -181,11 +181,20 @@ $(document).ready(function () {
                 for (i = 0; i < count; i = i + 1) {
 
                     var obj = contacts.addressBook[i],
+<<<<<<< HEAD
                         isItFound = obj.name.toLowerCase().indexOf(searchValue);
 
                     if (isItFound !== -1) {
 
                         target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>';
+=======
+                        isItFound = obj.name.match(new RegExp(searchValue, "i"));
+
+                    if (isItFound) {
+
+                            target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>';
+                        }
+>>>>>>> still trying to sync
                     }
                 }
             }

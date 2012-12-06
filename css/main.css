@@ -46,7 +46,9 @@ table {
 
 /*Global***********************************************/
 
+
 @import url(http://fonts.googleapis.com/css?family=Comfortaa);
+
 
 
 body {
@@ -58,6 +60,7 @@ body {
 	width: 960px;
 	margin: 0 auto;
 }
+
 
 #main {
 	position: absolute;
@@ -77,6 +80,7 @@ body {
     outline:none;
     opacity: 0.5;
 }
+
 
 /*header*****************************************************/
 
@@ -99,10 +103,12 @@ h1 {
 
 /*main***********************************************************/
 
+
 #search-form {
 	text-align: center;
 	padding: 24px;
 }
+
 
 #search-form input[placeholder] {
 	font-size: 16px;
@@ -158,32 +164,3 @@ a:visited {color:blue;}  /* visited link */
 a:hover {color:#686867; text-decoration: none;}  /* mouse over link */
 a:active {color:#0000FF;} 
 
-.main {
-	width: 960px;
-	margin: 0 auto;
-	background: rgba(0,0,0,.1);
-}
-
-header {
-	background: url("../img/header_bg.png")
-}
-
-h1 {
-	text-align: center;
-	color: #a5aab1;
-	font-size: 60px;
-	font-family: 'Comfortaa', cursive;
-	padding: 40px;
-	text-shadow: white 1px 1px 1px white;
-}
-
-#search-form, #output {
-	text-align: center;
-	padding: 40px;
-}
-
-#q {
-	width: 400px;
-	height: 50px;
-	border-radius: 4px;
-}
