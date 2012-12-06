@@ -46,6 +46,10 @@ table {
 
 /*Global***********************************************/
 
+<<<<<<< HEAD
+=======
+@import url(http://fonts.googleapis.com/css?family=Comfortaa);
+>>>>>>> gh-pages
 
 body {
 	background: url("../img/body_bg.png");
@@ -57,8 +61,11 @@ body {
 	background: rgba(0,0,0,.1);
 }
 
+<<<<<<< HEAD
 /*header*****************************************************/
 
+=======
+>>>>>>> gh-pages
 header {
 	background: url("../img/header_bg.png")
 }
@@ -72,9 +79,12 @@ h1 {
 	text-shadow: white 1px 1px 1px white;
 }
 
+<<<<<<< HEAD
 
 /*main***********************************************************/
 
+=======
+>>>>>>> gh-pages
 #search-form, #output {
 	text-align: center;
 	padding: 40px;

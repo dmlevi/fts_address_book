@@ -141,10 +141,17 @@
                 for (i = 0; i < count; i = i + 1) {
 
                     var obj = contacts.addressBook[i],
+<<<<<<< HEAD
                         isItFound = obj.name.match(new RegExp(searchValue, "i"));
 
                     if (isItFound) {
                       
+=======
+                        isItFound = obj.name.toLowerCase().indexOf(searchValue);
+
+                    if (isItFound !== -1) {
+
+>>>>>>> gh-pages
                         target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>';
                     }
                 }
