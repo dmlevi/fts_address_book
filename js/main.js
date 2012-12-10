@@ -1,6 +1,18 @@
 // start annoynymous function
 (function() {
 
+    function getHTTPObject () {
+
+        var xhr;
+
+        if (window.XMLHTTPRequest) {
+
+            xhr = new XMLHTTPRequest();
+        }  else if (window.ActiveXObject) {
+            xhr = ne ActiveXObject("Mxm1.XMLHTTP");
+        }
+    }
+
     // define the DOM elements
 
     var searchForm = document.getElementById("search-form"),
