@@ -34,13 +34,12 @@
                 var contacts = JSON.parse(request.responseText);
 
                 if (typeof callback === "function") {
-
                     callback(contacts);
                 }
             }
-        };
+        }
 
-        request.open("GET", "data/contacts.json", true);
+        request.open("GET", dataUrl, true);
         request.send(null);
     }
 
@@ -72,7 +71,7 @@
 
                     for (i = 0; i < count; i = i + 1) {
 
-                        var obj = addressBook[i],
+                        var obj = addrBook[i],
                             isItFound = obj.name.match(new RegExp(searchValue, "i"));
 
                         if (isItFound) {
@@ -88,7 +87,7 @@
 
             var output = document.getElementById("output");
 
-            ajaxCall("data/contacts.json", output, function(data) {
+            ajaxCall("data/contacts.json", output, function (data) {
 
                 var addrBook = data.addressBook,
                     count = addrBook.length,
@@ -100,7 +99,7 @@
 
                     for (i = 0; i < count; i = i + 1) {
 
-                        var obj = addressBook[i];
+                        var obj = addrBook[i];
 
                         target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>';
                     }
