@@ -37,7 +37,7 @@
                     callback(contacts);
                 }
             }
-        }
+        };
 
         request.open("GET", dataUrl, true);
         request.send(null);
