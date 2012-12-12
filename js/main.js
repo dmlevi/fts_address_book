@@ -1,5 +1,5 @@
 // start annoynymous function
-(function() {
+$(document).ready(function() {
 
 
     // function for detecting compatabilty
