@@ -1,47 +1,22 @@
 // start annoynymous function
-(function() {
+$(document).ready(function() {
 
 
-    // function for detecting compatabilty
+   $.getJSON('data/contacts.json', function (data) {
 
-    function getHTTPObject() {
+        var addrBook = data.addressBook,
+        count = addrBook.length;
 
-        var xhr;
+        $('#output').empty();
 
-        if (window.XMLHttpRequest) {
+        if (count > 0) {
 
-            xhr = new XMLHttpRequest();
-        } else if (window.ActiveXObject) {
-            xhr = new ActiveXObject("Mxm1.XMLHTTP");
+            $.each(addrBook, function (i, obj) {
+
+            });
         }
-
-        return xhr;
-    }
-
-
-    // define ajax call
-
-    function ajaxCall(dataUrl, outputElement, callback) {
-
-        var request = getHTTPObject();
-
-        outputElement.innerHTML = "We are working hard to load your contacts";
-
-        request.onreadystatechange = function() {
-
-            if (request.readyState === 4 && request.status === 200) {
-
-                var contacts = JSON.parse(request.responseText);
-
-                if (typeof callback === "function") {
-                    callback(contacts);
-                }
-            }
-        };
-
-        request.open("GET", dataUrl, true);
-        request.send(null);
-    }
+   });
+});
 
     // define the DOM elements
     var searchForm = document.getElementById("search-form"),
