@@ -9,26 +9,27 @@ $(document).ready(function() {
 
         $('#output').empty();
 
-        if (count > 0) {
+            if (count > 0) {
 
             $.each(addrBook, function (i, obj) {
 
             });
         }
    });
-});
+
+
 
     // define the DOM elements
-    var searchForm = document.getElementById("search-form"),
-        searchField = document.getElementById("q"),
-        target = document.getElementById("output");
+    var searchForm = $("#search-form"),
+        searchField = $("#q"),
+        target = $("#output");
 
 
     var addr = {
 
         search: function(event) {
 
-            var output = document.getElementById("output");
+            var output = $("#output");
 
             ajaxCall("data/contacts.json", output, function (data) {
 
@@ -60,7 +61,7 @@ $(document).ready(function() {
 
         getAllContacts: function() {
 
-            var output = document.getElementById("output");
+            var output = $("#output");
 
             ajaxCall("data/contacts.json", output, function (data) {
 
