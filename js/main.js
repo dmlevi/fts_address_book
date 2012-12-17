@@ -2,14 +2,14 @@
 $(document).ready(function() {
 
 
-   $.getJSON('data/contacts.json', function (data) {
+    $.getJSON('data/contacts.json', function(data) {
 
         var addrBook = data.addressBook,
-        count = addrBook.length;
+            count = addrBook.length;
 
         $('#output').empty();
 
-   });
+    });
 
 
 
@@ -32,20 +32,20 @@ $(document).ready(function() {
                 success: function(data) {
 
                     var addrBook = data.addressBook,
-                    count = addrBook.length;
+                        count = addrBook.length;
 
                     $('#output').empty();
 
-                    if(count > 0) {
+                    if (count > 0) {
 
-                        $.each(addrBook,function (i) {
-                            
-                             var obj = addrBook[i],
-                                
-                            isItFound = obj.name.match(new RegExp(searchValue, "i"));
+                        $.each(addrBook, function(i) {
+
+                            var obj = addrBook[i],
+
+                                isItFound = obj.name.match(new RegExp(searchValue, "i"));
 
                             if (isItFound) {
-                            
+
                                 $('#output').append('<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>');
 
                             }
@@ -55,59 +55,35 @@ $(document).ready(function() {
                 }
             });
 
-            ajaxCall("data/contacts.json", output, function (data) {
 
+            getAllContacts: function() {
 
-                var searchValue = searchField.value,
-                    addrBook = data.addressBook,
-                    count = addrBook.length,
-                    i;
+                var output = $("#output");
 
-                event.preventDefault();
+                $.ajax({
+                    type: 'GET',
+                    url: 'data/contacts.json',
+                    dataType: 'json',
+                    success: function(data) {
 
-                target.innerHTML = "";
+                        var addrBook = data.addressBook,
+                            count = addrBook.length;
 
-                if (count > 0 && searchValue !== "") {
+                        $('#output').empty();
 
-                    for (i = 0; i < count; i = i + 1) {
+                        if (count > 0) {
 
-                        var obj = addrBook[i],
-                            isItFound = obj.name.match(new RegExp(searchValue, "i"));
+                            $.each(addrBook, function(i) {
 
-                        if (isItFound) {
+                                var obj = addrBook[i],
 
-                            target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>';
-                        }
-                    }
+                                    $('#output').append('<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>');
+                            }
+                            }
+                        });
                 }
-            });
-        },
+                };
 
-        getAllContacts: function() {
+                searchField.addEventListener("keyup", addr.search, false);
 
-            var output = $("#output");
-
-            ajaxCall("data/contacts.json", output, function (data) {
-
-                var addrBook = data.addressBook,
-                    count = addrBook.length,
-                    i;
-
-                target.innerHTML = "";
-
-                if (count > 0) {
-
-                    for (i = 0; i < count; i = i + 1) {
-
-                        var obj = addrBook[i];
-
-                        target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>';
-                    }
-                }
-            });
-        }
-    };
-
-    searchField.addEventListener("keyup", addr.search, false);
-
-})();
+            })();
