@@ -9,12 +9,6 @@ $(document).ready(function() {
 
         $('#output').empty();
 
-            if (count > 0) {
-
-            $.each(addrBook, function (i, obj) {
-
-            });
-        }
    });
 
 
@@ -30,6 +24,36 @@ $(document).ready(function() {
         search: function(event) {
 
             var output = $("#output");
+
+            $.ajax({
+                type: 'GET',
+                url: 'data/contacts.json',
+                dataType: 'json',
+                success: function(data) {
+
+                    var addrBook = data.addressBook,
+                    count = addrBook.length;
+
+                    $('#output').empty();
+
+                    if(count > 0) {
+
+                        $.each(addrBook,function (i) {
+                            
+                             var obj = addrBook[i],
+                                
+                            isItFound = obj.name.match(new RegExp(searchValue, "i"));
+
+                            if (isItFound) {
+                            
+                                $('#output').append('<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>');
+
+                            }
+                        });
+                    }
+
+                }
+            });
 
             ajaxCall("data/contacts.json", output, function (data) {
 
