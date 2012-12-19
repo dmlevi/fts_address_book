@@ -4,69 +4,23 @@ $(document).ready(function() {
 
         var addrBook = data.addressBook,
             count = addrBook.length;
+    }); // end ajax call
+
+    $('#output').keyup(function(event) {
 
         $('#output').empty();
-    }); // end ajax call
-    var searchForm = $("#search-form");
-    searchField = $("q");
-    target = $("output");
 
-    var addr = {
+        if (count > 0) {
 
-        search: function(event) {
+            $.each(addrBook, function(i, obj) {
 
-            var output = $("#output");
+                isItFound = obj.name.match(new RegExp(searchValue, "i"));
 
-            ajaxCall('data/contacts.json', output, function(data) {
+                if (isItFound) {
 
-                var searchValue = searchField.value,
-                    addrBook = data.addressbook,
-                    count = addrBook.length,
-                    i;
-
-                event.preventDefault();
-
-                $('#output').empty();
-
-
-                if (count > 0) {
-
-                    $.each(addrBook, function(i,obj) {
-
-                        isItFound = obj.name.match(new RegExp(searchValue, "i"));
-
-                        if (isItFound) {
-
-                            $('#output').append('<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>').fadeIn();
-                        }
-                    }); // end each
-                } // end count
+                    $('#output').append('<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>').fadeIn();
+                }
             });
-
-        },
-
-        getAllContacts: function() {
-
-            var output = $("#output");
-
-            ajaxCall('data/contacts.json', output, function(data) {
-
-                var addrBook = data.addressbook,
-                    count = addrBook.length,
-                    i;
-
-                $('#output').empty();
-
-                if (count > 0) {
-
-                    $.each(addrBook, function(i,obj) {
-
-                        $('#output').append('<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>').fadeIn();
-                    }
-                );
-            });
-        },
-
-    } //close addr
-            searchField.addEventListener("keyup", addr.search, false);
-        }); // close document ready​
+        }
+    });
+});
