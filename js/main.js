@@ -8,11 +8,9 @@ $(document).ready(function() {
             searchField = $('#q'),
             searchValue = searchField.value;
 
-    }); // end ajax call
-
-    // HINT: who is receiving the keyup event?
-    $('#output').keyup(function(event) {
-        
+        // HINT: who is receiving the keyup event?
+        $('#q').keyup(function(event) {
+            
         $('#output').empty();
 
         if (count > 0) {
@@ -25,8 +23,9 @@ $(document).ready(function() {
                 if (isItFound) {
 
                     $('#output').append('<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>');
-                }
-            });
-        }
-    });
+                    }
+                });
+            }
+        });
+    }); // end ajax call
 });
