@@ -1,12 +1,12 @@
 $(document).ready(function() {
 
+    var searchField = $('#q'),
+        searchValue = searchField.value;
+
     $.getJSON('data/contacts.json', function(data) {
 
-        // HINT: think about WHEN you're setting these variables. Should they all get set here?
         var addrBook = data.addressBook,
-            count = addrBook.length,
-            searchField = $('#q'),
-            searchValue = searchField.value;
+            count = addrBook.length;
 
         $('#q').keyup(function(event) {
             
