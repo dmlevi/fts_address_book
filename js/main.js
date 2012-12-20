@@ -1,20 +1,20 @@
-// document.ready waits for the entire dom to load. As soon as the dom is fully loaded, the code will execute.
-$(document).ready(function() {
-
     // Here I am caching some global variables that I will need
     var searchField = $('#q'),
         searchValue = searchField.value;
 
+
+// document.ready waits for the entire dom to load. As soon as the dom is fully loaded, the code will execute.
+$(document).ready(function() {
+
     //.getJson is magic! I pass in the url of the data
     $.getJSON('data/contacts.json', function(data) {
-
-        console.log(data);
 
         //storing address book data in a local variable named addrBook, I think this may be my problem since its local. I need it to keep goin for my loop towards the bottom!
         var addrBook = data.addressBook,
 
             //grabbing the count for the loop
             count = addrBook.length;
+
 
         $('#q').keyup(function() {
 
