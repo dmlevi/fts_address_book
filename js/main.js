@@ -7,7 +7,7 @@ $(document).ready(function() {
     searchValue = searchField.value;
 
     //.getJson is magic! I pass in the url of the data
-    $.getJSON('data/contacts.json', function() {
+    $.getJSON('data/contacts.json', function (data) {
 
         //storing address book data in a local variable named addrBook, I think this may be my problem since its local. I need it to keep goin for my loop towards the bottom!
         var addrBook = data.addressBook,
@@ -16,7 +16,7 @@ $(document).ready(function() {
         count = addrBook.length;
 
         // target the query and execute function
-        $('#q').keyup(function(event) {
+        $('#q').keyup(function() {
             
         //clear any html in the target
         $('#output').empty();
@@ -35,8 +35,8 @@ $(document).ready(function() {
                     //if its found, print out the option
                     $('#output').append('<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>');
                     }
-                });
-            }
-        });
+                }); //close
+            } //close count
+        }); //close keyup
     }); // end ajax call
-});
+}); // dom ready close
