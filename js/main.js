@@ -6,6 +6,9 @@ $(document).ready(function() {
     var searchField = $('#q'),
     searchValue = searchField.value;
 
+    // target the query and execute function
+    $('#q').keyup(function() {
+
     //.getJson is magic! I pass in the url of the data
     $.getJSON('data/contacts.json', function (data) {
 
@@ -14,9 +17,6 @@ $(document).ready(function() {
 
         //grabbing the count for the loop
         count = addrBook.length;
-
-        // target the query and execute function
-        $('#q').keyup(function() {
             
         //clear any html in the target
         $('#output').empty();
@@ -37,6 +37,6 @@ $(document).ready(function() {
                     }
                 }); //close
             } //close count
-        }); //close keyup
-    }); // end ajax call
+        }); // end ajax call
+    }); //close keyup
 }); // dom ready close
