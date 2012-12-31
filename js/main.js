@@ -7,7 +7,7 @@ $(document).ready(function() {
             addrBook = data.addressBook,
             count = addrBook.length;
 
-        $('#q').keyup(function(event) {
+        $('#q').keyup(function() {
 
             $('#output').empty();
 
