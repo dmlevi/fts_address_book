@@ -1,22 +1,20 @@
 $(document).ready(function() {
 
-    var searchField = $('#q'),
-        searchValue = searchField.value;
-
     $.getJSON('data/contacts.json', function(data) {
 
-        var addrBook = data.addressBook,
+        var searchField = $('#q'),
+            searchValue = searchField.value,
+            addrBook = data.addressBook,
             count = addrBook.length;
 
-        $('#output').empty();
+        $('#q').keyup(function(event) {
 
-        $('#q').keyup(function() {
+            $('#output').empty();
 
             if (count > 0) {
 
                 $.each(addrBook, function(i, obj) {
 
-                    //check if there is a match using regEx
                     isItFound = obj.name.match(new RegExp(searchValue, "i"));
 
                     if (isItFound) {
@@ -25,6 +23,6 @@ $(document).ready(function() {
                     }
                 }); //close
             } //close count 
-        });
+        }); //keyup close
     }); // end getJson call
 }); // dom ready close​
