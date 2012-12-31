@@ -3,11 +3,12 @@ $(document).ready(function() {
     $.getJSON('data/contacts.json', function(data) {
 
         var searchField = $('#q'),
-            searchValue = searchField.value,
             addrBook = data.addressBook,
             count = addrBook.length;
 
         $('#q').keyup(function() {
+
+            var searchValue = searchField.val();
 
             $('#output').empty();
 
