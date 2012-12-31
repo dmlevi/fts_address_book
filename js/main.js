@@ -1,28 +1,33 @@
-(function( $ ) {
+(function($){
  
-  $.fn.superBook = function(options) {
+    $.fn.extend({ 
 
-    var settings =
-    {
-        'url'   :  '[]',
-        'output' : '[]'
-    };
+        superBook: function(options) {
 
-    return this.each(function() {
-  
-    $.getJSON(settings.url, function(data) {
+            var defaults = {
+                url: 'data/contacts.json',
+                searchField : '#q'
+            };
+                 
+            var options =  $.extend(defaults, options);
+ 
+            return this.each(function() {
+            
+                var o = options;
 
-        var searchField = $(this),
-            addrBook = data.this,
-            count = addrBook.length;
+                $.getJSON(o.url, function(data) {
 
-        $(this).keyup(function() {
+                var searchField = (o.searchField),
+                    addrBook = data,
+                    count = addrBook.length;
 
-            var searchValue = searchField.val();
+                $(o.searchField).keyup(function() {
 
-            $(this).empty();
+                var searchValue = searchField.val();
 
-            if (count > 0) {
+                $(o.searchField).empty();
+
+                if (count > 0) {
 
                 $.each(addrBook, function(i, obj) {
 
@@ -30,16 +35,18 @@
 
                     if (isItFound) {
 
-                    $(this).append('<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>');
-                    }
-                 }); //close
-             } //close count 
-        }); //keyup close
-    }); // end getJson call
+                        $(o.searchField).append('<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>');
+                                }
+                            }); //close
+                        } //close count 
+                    }); //keyup close
+                }); // end getJson call
+             
+            });
+        }
     });
-
-  };
-})( jQuery );
+     
+})(jQuery);
 
 
 $(document).ready(function() {
