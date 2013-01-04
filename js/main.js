@@ -8,23 +8,22 @@ $(document).ready(function() {
         var addrBook = data.addressBook,
             count = addrBook.length;
 
-        $('#output').empty();
-
         $('#q').keyup(function() {
+
+            $('#output').empty();
 
             if (count > 0) {
 
                 $.each(addrBook, function(i, obj) {
 
-                    //check if there is a match using regEx
                     isItFound = obj.name.match(new RegExp(searchValue, "i"));
 
                     if (isItFound) {
 
                         $('#output').append('<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>');
                     }
-                }); //close
+                }); //close each
             } //close count 
-        });
+        });  //close keyup
     }); // end getJson call
 }); // dom ready close​
