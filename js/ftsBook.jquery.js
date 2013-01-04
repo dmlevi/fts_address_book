@@ -28,10 +28,11 @@
                   $.each(addrBook, function(i, obj) {
 
                       isItFound = obj.name.match(new RegExp(searchValue, "i"));
+                      template = $('#template').html();
 
                       if (isItFound) {
 
-                          $(options.output).append('<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>');
+                          $(options.output).append(Mustache.to_html(template, obj));
                       }
                   }); //close
               } //close count 

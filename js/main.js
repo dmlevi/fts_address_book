@@ -32,12 +32,7 @@ $(document).ready(function() {
 
 
 //                     if (isItFound) {
-                    }
-                }); //close each
-            } //close count 
-        });  //close keyup
-    }); // end getJson call
-}); // dom ready close​
+    
 //                         $('#output').append('<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>');
 //                     }
 //                 }); //close
