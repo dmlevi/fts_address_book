@@ -1,29 +1,47 @@
+
 $(document).ready(function() {
 
-    var searchField = $('#q'),
-        searchValue = searchField.value;
+    $(window).ftsBook({url: 'data/contacts.json', query : '#q', output : '#output'});
 
-    $.getJSON('data/contacts.json', function(data) {
+});
 
-        var addrBook = data.addressBook,
-            count = addrBook.length;
 
-        $('#q').keyup(function() {
 
-            $('#output').empty();
+// $(document).ready(function() {
 
-            if (count > 0) {
+//     $.getJSON('data/contacts.json', function(data) {
 
-                $.each(addrBook, function(i, obj) {
+//         var searchField = $('#q'),
+//             addrBook = data.addressBook,
+//             count = addrBook.length;
 
-                    isItFound = obj.name.match(new RegExp(searchValue, "i"));
+//         $('#q').keyup(function() {
 
-                    if (isItFound) {
 
-                        $('#output').append('<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>');
+
+//             var searchValue = searchField.val();
+
+//             $('#output').empty();
+
+//             if (count > 0) {
+
+
+//                 $.each(addrBook, function(i, obj) {
+
+//                     isItFound = obj.name.match(new RegExp(searchValue, "i"));
+
+
+//                     if (isItFound) {
                     }
                 }); //close each
             } //close count 
         });  //close keyup
     }); // end getJson call
 }); // dom ready close​
+//                         $('#output').append('<p><a href="mailto:' + obj.email + '">' + obj.name + '</a></p>');
+//                     }
+//                 }); //close
+//             } //close count 
+//         }); //keyup close
+//     }); // end getJson call
+// }); // dom ready close​
