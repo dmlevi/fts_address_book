@@ -17,19 +17,15 @@ $(document).ready(function() {
 
 //         $('#q').keyup(function() {
 
-
-
 //             var searchValue = searchField.val();
 
 //             $('#output').empty();
 
 //             if (count > 0) {
 
-
 //                 $.each(addrBook, function(i, obj) {
 
 //                     isItFound = obj.name.match(new RegExp(searchValue, "i"));
-
 
 //                     if (isItFound) {
     
