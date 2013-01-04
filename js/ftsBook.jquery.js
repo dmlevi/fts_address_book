@@ -23,7 +23,7 @@
 
               $(options.output).empty();
 
-              if (count > 0) {
+              if (count > 0 && searchValue !== "") {
 
                   $.each(addrBook, function(i, obj) {
 
