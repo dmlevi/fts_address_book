@@ -54,7 +54,6 @@ body {
 .main {
 	width: 960px;
 	margin: 0 auto;
-	background: rgba(0,0,0,.1);
 }
 
 
@@ -77,13 +76,43 @@ h1 {
 
 /*main***********************************************************/
 
-#search-form, #output {
+#search-form {
 	text-align: center;
 	padding: 40px;
+}
+
+#output {
+
+}
+
+#search-form input[placeholder] {
+	font-size: 20px;
 }
 
 #q {
 	width: 400px;
 	height: 50px;
 	border-radius: 4px;
+}
+
+#pad {
+	background: white;
+	width: 600px;
+	margin: 0 auto;
+	height: 500px;
+	border-radius: 2px solid orange;
+}
+
+hr {
+	margin: 0
+}
+
+p {
+	padding: 20px;
+	background: rgba(0,0,0,.1);
+	font-size: 30px;
+}
+
+p a {
+
 }
