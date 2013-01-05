@@ -61,15 +61,17 @@ body {
 
 
 header {
-	background: url("../img/header_bg.png")
+	/*background: url("../img/header_bg.png")*/
+	background: #ececec;
 }
 
 h1 {
-	text-align: center;
-	color: #a5aab1;
+	width: 960px;
+	margin: 0 auto;
+	color: rgba(222, 112, 41, .7);
 	font-size: 60px;
 	font-family: 'Comfortaa', cursive;
-	padding: 40px;
+	padding: 20px 0;
 	text-shadow: white 1px 1px 1px white;
 }
 
@@ -78,7 +80,7 @@ h1 {
 
 #search-form {
 	text-align: center;
-	padding: 40px;
+	padding: 24px;
 }
 
 #output {
@@ -86,21 +88,22 @@ h1 {
 }
 
 #search-form input[placeholder] {
-	font-size: 20px;
+	font-size: 16px;
 }
 
 #q {
-	width: 400px;
-	height: 50px;
-	border-radius: 4px;
+	width: 500px;
+	height: 30px;
+	border-radius: 2px;
 }
 
 #pad {
 	background: white;
 	width: 600px;
+	height: 600px;
 	margin: 0 auto;
-	height: 500px;
-	border-radius: 2px solid orange;
+	border: 2px solid rgba(222, 112, 41, .3);
+	box-shadow: 1px 1px 2px #999;
 }
 
 hr {
@@ -109,10 +112,15 @@ hr {
 
 p {
 	padding: 20px;
-	background: rgba(0,0,0,.1);
+	background: #fafafa;
 	font-size: 30px;
 }
 
-p a {
-
+p:hover {
+	background: rgba(222, 112, 41, .3);
 }
+
+a:link {color:blue;}      /* unvisited link */
+a:visited {color:blue;}  /* visited link */
+a:hover {color:#686867; text-decoration: none;}  /* mouse over link */
+a:active {color:#0000FF;} 
