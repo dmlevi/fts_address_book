@@ -14,12 +14,14 @@
       $.getJSON(options.url, function(data) {
 
           var searchField = $(options.query),
+              imgs = $('img').attr(),
               addrBook = data.addressBook,
               count = addrBook.length;
 
           $('#q').keyup(function() {
 
-              var searchValue = searchField.val();
+              var searchValue = searchField.val(),
+                    imgValue = imgs.val();
 
               $(options.output).empty();
 
@@ -28,11 +30,14 @@
                   $.each(addrBook, function(i, obj) {
 
                       isItFound = obj.name.match(new RegExp(searchValue, "i"));
+                      match = obj.id.match(new RegExp(imgValue, "i"));
                       template = $('#template').html();
 
                       if (isItFound) {
 
                           $(options.output).append(Mustache.to_html(template, obj));
+
+                          $(imgValue).addClass("transition");
                       }
                   }); //close
               } //close count 
