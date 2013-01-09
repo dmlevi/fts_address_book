@@ -1,5 +1,4 @@
 {
-
 	"addressBook" : [
 		{
 			"name": "Kristy Stetson",
@@ -7,12 +6,12 @@
 			"id": "kristy_s"
 		},
 		{
-			"name": "Alex Sylvia",	
+			"name": "Alex Sylvia",
 			"email": "alex@freshtilledsoil.com",
 			"id": "alex_s"
 		},
 		{
-			"name": "Alec Harrison",	
+			"name": "Alec Harrison",
 			"email": "alec@freshtilledsoil.com",
 			"id": "alec_h"
 		},
@@ -135,6 +134,6 @@
 			"name": "Kitt Williams",
 			"email": "kitt@freshtilledsoil.com",
 			"id" : "kitt_w"
-		},
+		}
 	]
 }
