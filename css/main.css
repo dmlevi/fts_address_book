@@ -1,0 +1,166 @@
+/*reset*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*Global***********************************************/
+
+
+@import url(http://fonts.googleapis.com/css?family=Comfortaa);
+
+
+
+body {
+	background: url("../img/body_bg.png");
+}
+
+
+.container {
+	width: 960px;
+	margin: 0 auto;
+}
+
+
+#main {
+	position: absolute;
+	right: 5%;
+	width:50%;
+	margin: 0 auto;
+}
+
+
+.am-wrapper {
+    float:left;
+    position:relative;
+    overflow:hidden;
+}
+.am-wrapper img {
+    position:absolute;
+    outline:none;
+    opacity: 0.5;
+}
+
+
+/*header*****************************************************/
+
+
+header {
+	/*background: url("../img/header_bg.png")*/
+	background: #ececec;
+}
+
+h1 {
+	width: 960px;
+	margin: 0 auto;
+	color: rgba(222, 112, 41, .7);
+	font-size: 60px;
+	font-family: 'Comfortaa', cursive;
+	padding: 20px 0;
+	text-shadow: white 1px 1px 1px white;
+}
+
+
+/*main***********************************************************/
+
+
+#search-form {
+	text-align: center;
+	padding: 24px;
+}
+
+
+#search-form input[placeholder] {
+	font-size: 16px;
+}
+
+#q {
+	width: 500px;
+	height: 30px;
+	border-radius: 2px;
+}
+
+#overlay {
+	position: absolute;
+	left: 5%;
+/*	z-index: 100;*/
+}
+
+#output {
+	opacity: 0.9;
+	width: 500px;
+	margin: 0 auto;
+/*	border: 2px solid rgba(222, 112, 41, .3);*/
+	box-shadow: 1px 1px 2px #999;
+}
+.transition {
+	display: none;
+}
+hr {
+	margin: 0;
+	border: 0;
+    	height: 0;
+   	border-top: 1px solid rgba(0, 0, 0, 0.1);
+    	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+hr:first-child {
+	display: none;
+}
+
+p {
+	padding: 20px;
+	background: #fafafa;
+	font-size: 30px;
+}
+
+
+p:hover {
+	background: rgba(222, 112, 41, .3);
+}
+
+a:link {color:blue;}      /* unvisited link */
+a:visited {color:blue;}  /* visited link */
+a:hover {color:#686867; text-decoration: none;}  /* mouse over link */
+a:active {color:#0000FF;}
+
