@@ -23,7 +23,7 @@
 
               $(options.output).empty();
 
-              if (count > 0) {
+              if (count > 0 && searchValue !== "") {
 
                   $.each(addrBook, function(i, obj) {
 
@@ -33,6 +33,7 @@
                       if (isItFound) {
 
                           $(options.output).append(Mustache.to_html(template, obj));
+
                       }
                   }); //close
               } //close count
