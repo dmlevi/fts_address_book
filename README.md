@@ -1,6 +1,5 @@
 AUX H2013: JavaScript Primer
-This is the AUX Winter 2012 warmup.
-
+=========
 Sprint 1: Just make the damn thing work
 Build a web form that instantly (i.e. without pressing "submit") searches a custom address book and returns all matches. You will need to create the address book data from scratch.
 
