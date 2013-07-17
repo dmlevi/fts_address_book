@@ -1,5 +1,9 @@
 AUX H2013: JavaScript Primer
 =========
+
+Great experience with Javascript
+=================================
+
 Sprint 1: Just make the damn thing work
 Build a web form that instantly (i.e. without pressing "submit") searches a custom address book and returns all matches. You will need to create the address book data from scratch.
 
